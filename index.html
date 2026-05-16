@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carte_De_Visite</title>
+    <script src="config.js" defer="defer"></script>
+    <script src="script.js" defer="defer"></script>
 </head>
 <body>
     <!-- Carte_De_Visite -->
@@ -12,29 +14,29 @@
         <header>
             <!-- photo -->
             <figure>
-                <img src="lien_ou_chemin" alt="description de l'image">
+                <img id="photo" src="img/photo_facke.png" alt="Portrait professionel rond d'un homme.">
             </figure>
             <!-- nom & prénom -->
-            <h1></h1>
+            <h1 id="nom">MARTIN Jean</h1>
             <!-- rôle -->
-            <h2></h2>
+            <h2 id="role">Développeur</h2>
         </header>
-        <address>
-            <a href="tel:+33123456789">01 23 45 67 89</a>
-            <a href="mailto:nom.prenom@exemple.com">nom.prenom@exemple.com</a>
-            <nav>
-                <a href="https://www.exemple.com" target="_blank" rel="noopener noreferrer"><img src="lien_ou_chemin" alt="description"></a>
+        <address id="contacts">
+            <a id="tel" href="tel:+330123456789">01 23 45 67 89</a>
+            <a id="mail" href="mailto:martin.jean@gmail.com">martin.jean@gmail.com</a>
+            <nav id="reseaux">
+                <a id="l_github" href="https://github.com/Jean_Martin" target="_blank" rel="noopener noreferrer"><img src="img/logo_github.png" alt="Logo de GitHub"></a>
+                <a id="l_linkedin" href="https://www.linkedin.com/in/jean-martin-123456789/" target="_blank" rel="noopener noreferrer"><img src="img/logo_linkedin.jpg" alt="Logo de linkedin"></a>
             </nav>
         </address>
         <section>
             <button>vCard</button>
             <button>partage</button>
         </section>
-        <div class="togle">
+        <div class="toggle">
             <input type="checkbox" id="switch">
             <label for="switch"></label>
         </div>
     </article>
 </body>
 </html>
-
