@@ -1,0 +1,23 @@
+:root {
+    --fond-page : #f5f5f0;
+    --fond-carte : #ffffff;
+    --texte-principal : #1a1a1a;
+    --texte-secondaire : #6b7280;
+    --bordure : #e5e7eb;
+    --ombre : #52b78820;
+    --accent-deco : #52b788;
+    --accent-btn : #368161;
+    --accent-survol : #3da374;
+}
+
+html.dark {
+    --fond-page : #0f1117;
+    --fond-carte : #1a1f2e;
+    --texte-principal : #f0f0f0;
+    --texte-secondaire : #9ca3af;
+    --bordure : #2d3748;
+    --ombre : #00000040;
+    --accent-deco : #52b788;
+    --accent-btn : #368161;
+    --accent-survol : #6dcfa3;
+}
