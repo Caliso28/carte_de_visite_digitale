@@ -70,11 +70,11 @@ Ce bloque a pour objectif de modifier par programmation les éléments HTML
 afin de ne pas afficher d'informations personnelles en claire. Vous pouvez soit le
 supprimer et modifier manuellement le HTML ;
 soit créer un dictionnaire comme celui-ci dans un fichier config.js à la
-racine du dossier carte_de_visite_digitale :
+racine du dossier carte_de_visite_digitale, ce qui est vivement conseillé pour la suite du JS :
 
 const dicInfos = {
     identite : {nom : "Nom", prenom : "Prénom", photo : "img/portrait_professionnel.png", role : "métier"},
-    com : {tel : "tel:+330102030405", mail : "mailto:adresse_mail",
+    com : {tel : "0102030405", mail : "adresse_mail@exemple.com",
         reseaux : {github : "https://github.com/pseudo_github", linkedin : "lien vers votre compte linkedin"}}
     }
 */
@@ -112,13 +112,14 @@ function capitaliser (mot) {
 
 function genererVCard () {
 
-    const FN = capitaliser(dicInfos.identite.nom) + " " + capitaliser(dicInfos.identite.prenom);
+    const FN = capitaliser(dicInfos.identite.prenom) + " " + capitaliser(dicInfos.identite.nom);
+    const TITLE = dicInfos.identite.role;
     const TEL = dicInfos.com.tel;
     const EMAIL = dicInfos.com.mail;
     const X_SOCIALPROFILE_G = dicInfos.com.reseaux.github;
     const X_SOCIALPROFILE_L = dicInfos.com.reseaux.linkedin;
 
-    return `BEGIN:VCARD\r\nVERSION:3.0\r\nFN:${FN}\r\nTEL;TYPE=CELL:${TEL}\r\nEMAIL:${EMAIL}\r\nX-SOCIALPROFILE;TYPE=GitHub:${X_SOCIALPROFILE_G}\r\nX-SOCIALPROFILE;TYPE=LinkedIn:${X_SOCIALPROFILE_L}\r\nEND:VCARD`;
+    return `BEGIN:VCARD\r\nVERSION:3.0\r\nFN:${FN}\r\nTITLE:${TITLE}\r\nTEL;TYPE=CELL:${TEL}\r\nEMAIL:${EMAIL}\r\nX-SOCIALPROFILE;TYPE=GitHub:${X_SOCIALPROFILE_G}\r\nX-SOCIALPROFILE;TYPE=LinkedIn:${X_SOCIALPROFILE_L}\r\nEND:VCARD`;
 }
 
 function genererBlobVCard() {
@@ -146,3 +147,47 @@ boutonAjout.addEventListener('click', function() {
     document.body.removeChild(lienTemporaire);
     URL.revokeObjectURL(urlBlob);
 });
+
+// Bouton partager via l'API Navigator.share
+
+
+async function partagerCarte() {
+    const nomContact = capitaliser(dicInfos.identite.prenom) + " " + capitaliser(dicInfos.identite.nom);
+    const lien = window.location.href;
+
+    /** Il se peut que la carte ne soit pas communicable directement à causes des restrictions de certaines applications 
+     comme Firefox PC ou les navigateur in app*/
+    const copieSecours = function() {
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(lien)
+                .then( function() {
+                    alert("Le partage direct est impossible. Le lien de la carte a été copié !");
+                })
+                .catch( function() {
+                    alert(`Impossible de copier automatiquement. Voici le lien : ${lien}`);
+                });
+        } else {
+            alert(`Voici le lien à copier : ${lien}`);
+        }
+    };
+
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: `Carte de visite de ${nomContact}`,
+                text: "Voici ma carte de visite digitale",
+                url: lien
+            });
+        } catch (error) {
+            if (error.name !== "AbortError") {
+                console.error("Erreur lors du partage :", error);
+                copieSecours();
+            }
+        }
+    } else {
+        copieSecours();
+    }
+}
+
+const partager = document.getElementById("partager");
+partager.addEventListener("click", function(){partagerCarte()});
