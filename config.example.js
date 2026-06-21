@@ -1,4 +1,4 @@
-// Complétez l'intégralité des informations et RENOMER ce fichier "config.js"
+// Complétez l'intégralité des informations et RENOMMER ce fichier "config.js"
 
 const dicInfos = {
     identite : {nom : "Nom", prenom : "Prénom", photo : "img/portrait_professionnel.png", role : "métier"},
