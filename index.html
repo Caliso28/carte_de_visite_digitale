@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carte_De_Visite</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="style.css">
     <script src="config.js" defer="defer"></script>
     <script src="script.js" defer="defer"></script>
 </head>
@@ -17,7 +19,8 @@
                 <img id="photo" src="img/photo_facke.png" alt="Portrait professionel rond d'un homme.">
             </figure>
             <!-- nom & prénom -->
-            <h1 id="nom">MARTIN Jean</h1>
+            <h1 id="nom">MARTINJ</h1>
+            <h1 id="prenom">Jean</h1>
             <!-- rôle -->
             <h2 id="role">Développeur</h2>
         </header>
@@ -25,13 +28,14 @@
             <a id="tel" href="tel:+330123456789">01 23 45 67 89</a>
             <a id="mail" href="mailto:martin.jean@gmail.com">martin.jean@gmail.com</a>
             <nav id="reseaux">
-                <a id="l_github" href="https://github.com/Jean_Martin" target="_blank" rel="noopener noreferrer"><img src="img/logo_github.png" alt="Logo de GitHub"></a>
-                <a id="l_linkedin" href="https://www.linkedin.com/in/jean-martin-123456789/" target="_blank" rel="noopener noreferrer"><img src="img/logo_linkedin.jpg" alt="Logo de linkedin"></a>
+                <a id="github" href="https://github.com/Jean_Martin" target="_blank" rel="noopener noreferrer"><img id="l_github" src="img/logo_github.svg" alt="Logo de GitHub"></a>
+
+                <a id="linkedin" href="https://www.linkedin.com/in/jean-martin-123456789/" target="_blank" rel="noopener noreferrer"><img id="l_linkedin" src="img/logo_linkedin.svg" alt="Logo de linkedin"></a>
             </nav>
         </address>
         <section>
-            <button>vCard</button>
-            <button>partage</button>
+            <button id="ajouter">Ajouter aux contacts</button>
+            <button id="partager">Partager</button>
         </section>
         <div class="toggle">
             <input type="checkbox" id="switch">
