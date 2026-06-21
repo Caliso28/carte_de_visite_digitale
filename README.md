@@ -17,7 +17,7 @@ Une carte de visite numérique interactive, moderne et respectueuse de la vie pr
 
 ## ♿ Accessibilité (WCAG)
 
-Ce projet a été conçu en veillant au respect des règles d'accessibilité numérique. Il valide les exigences minimales du **niveau AA des WCAG** (Web Content Accessibility Guidelines) :
+Ce projet a été conçu en veillant au respect des règles d'accessibilité numérique. Il a été conçu en visant les exigences minimales du **niveau AA des WCAG** (Web Content Accessibility Guidelines) :
 - Contraste des textes suffisant et adapté aux modes clair et sombre.
 - Utilisation de balises sémantiques HTML5 appropriées.
 
@@ -32,10 +32,10 @@ Afin d'éviter d'exposer publiquement vos coordonnées (téléphone, e-mail...) 
    ```javascript
    const dicInfos = {
        identite : { nom : "VotreNom", prenom : "VotrePrénom", photo : "img/portrait.png", role : "Votre Métier" },
-       com : { tel : "+33612345678", mail : "votre.mail@exemple.com",
-           reseaux : { github : "[https://github.com/votre_pseudo](https://github.com/votre_pseudo)", linkedin : "votre_lien_linkedin" }}
+       com : { tel : "0123456789", mail : "votre.mail@exemple.com",
+           reseaux : { github : "https://github.com/votre_pseudo", linkedin : "votre_lien_linkedin" }}
    };
-2. Renommez le fichier `config.example.js` en `config.js`.
+3. Renommez le fichier `config.example.js` en `config.js`.
 
 4. Assurez-vous que votre fichier `.gitignore` contient bien la ligne `config.js` pour éviter d'envoyer par erreur vos données privées sur votre dépôt public.
 
