@@ -3,7 +3,6 @@ Template de carte de visite virtuelle en HTML, CSS, JS.
 
 Une carte de visite numérique interactive, moderne et respectueuse de la vie privée. Ce projet permet d'afficher vos coordonnées professionnelles et propose des fonctionnalités avancées de partage et d'ajout aux contacts sans exposer directement vos données personnelles dans le code source public.
 
----
 
 ## ⚙️ Fonctionnalités
 
@@ -15,7 +14,6 @@ Une carte de visite numérique interactive, moderne et respectueuse de la vie pr
   - *Limites de la fonctionnalité :* Cette API nécessite obligatoirement une connexion sécurisée (`https://`). De plus, elle n'est pas supportée sur certains environnements comme **Firefox PC**, ou bloquée par les restrictions de sécurité des **navigateurs intégrés (In-App Browsers)** (ex: lorsqu'on ouvre le lien directement depuis l'application Instagram, Facebook ou TikTok).
   - *Solution de secours :* Le script intègre un système robuste qui détecte ces limitations. Si l'API de partage est indisponible ou bridée, le lien de la carte est automatiquement copié dans le presse-papiers de l'utilisateur avec un message d'avertissement.
 
----
 
 ## ♿ Accessibilité (WCAG)
 
@@ -23,7 +21,6 @@ Ce projet a été conçu en veillant au respect des règles d'accessibilité num
 - Contraste des textes suffisant et adapté aux modes clair et sombre.
 - Utilisation de balises sémantiques HTML5 appropriées.
 
----
 
 ## 🔐 Configuration & Injection des Données Personnelles
 
@@ -38,3 +35,14 @@ Afin d'éviter d'exposer publiquement vos coordonnées (téléphone, e-mail...) 
        com : { tel : "+33612345678", mail : "votre.mail@exemple.com",
            reseaux : { github : "[https://github.com/votre_pseudo](https://github.com/votre_pseudo)", linkedin : "votre_lien_linkedin" }}
    };
+2. Renommez le fichier `config.example.js` en `config.js`.
+
+4. Assurez-vous que votre fichier `.gitignore` contient bien la ligne `config.js` pour éviter d'envoyer par erreur vos données privées sur votre dépôt public.
+
+💡 *Remarque* : Le script principal (`script.js`) vérifie automatiquement si `dicInfos` existe (`typeof dicInfos != 'undefined'`) avant d'injecter dynamiquement les éléments dans le DOM.
+
+## 🌐 Hébergement et Déploiement
+⚠️ *Remarque importante* : Prévoyez un déploiement manuel et non continu (sur **Netlify** ou **Vercel** par exemple).
+
+Puisque le fichier `config.js` est exclu de votre dépôt GitHub public (via le `.gitignore`), un déploiement automatisé basé sur vos commits échouera à charger vos informations personnelles (Erreur 404 sur `config.js`).
+Pour l'héberger, effectuez un téléversement manuel du dossier complet (incluant votre `config.js` local) par glisser-déposer sur l'interface de Netlify, ou configurez des variables d'environnement si vous utilisez une plateforme avancée comme Vercel.
